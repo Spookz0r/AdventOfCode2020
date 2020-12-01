@@ -151,15 +151,15 @@ func main() {
 	}
 
 	result := programPartOne(data)
-	println("Result Part One:",result, "\n")  // took 0 nanoseconds apparently :D
+	println("Result Part One:",result, "\n")  // This took 6235 iterations
 
 	result2 := programPartTwo(data)
-	println("Result Part Two:",result2,"\n") // took 6001200 nanoseconds... lame
+	println("Result Part Two:",result2,"\n") // This took 817555 iterations
 	
 	result1adv := programPartOneAlt(data)
-	println("Result Part One Alternative:",result1adv, "\n") // took 0 nanoseconds apparently :D
+	println("Result Part One Alternative:",result1adv, "\n") // This took 8 iterations
 
 	result2adv := programPartTwoAlt(data)
-	println("Result Part Two Alternative:",result2adv,"\n") // took 0 nanoseconds apparently :D
+	println("Result Part Two Alternative:",result2adv,"\n") // This took 78 iterations
 
 }
