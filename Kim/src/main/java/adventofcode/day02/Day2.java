@@ -1,4 +1,4 @@
-package adventofcode.daytwo;
+package adventofcode.day02;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,7 +14,7 @@ public class Day2 {
 
   public static void solve2() throws FileNotFoundException {
     Pattern pattern = Pattern.compile("([0-9]*)-([0-9]*) ([a-z]): ([a-z]*)");
-    Scanner scanner = new Scanner(new File("src/main/java/adventofcode/daytwo/input.txt"));
+    Scanner scanner = new Scanner(new File("src/main/java/adventofcode/day02/input.txt"));
     int validPasswords = 0;
     String line;
     Matcher matcher;
@@ -38,7 +38,7 @@ public class Day2 {
 
   public static void solve1() throws FileNotFoundException {
     Pattern pattern = Pattern.compile("([0-9]*)-([0-9]*) ([a-z]): ([a-z]*)");
-    Scanner scanner = new Scanner(new File("src/main/java/adventofcode/daytwo/input.txt"));
+    Scanner scanner = new Scanner(new File("src/main/java/adventofcode/day02/input.txt"));
     int validPasswords = 0;
     String line;
     Matcher matcher;

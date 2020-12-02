@@ -1,4 +1,4 @@
-package adventofcode.dayone;
+package adventofcode.day01;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Day1 {
 
   public static void main(String[] args) throws FileNotFoundException {
-    Scanner scanner = new Scanner(new File("src/main/java/adventofcode/dayone/input.txt"));
+    Scanner scanner = new Scanner(new File("src/main/java/adventofcode/day01/input.txt"));
     List<Long> numbers = new ArrayList<>();
 
     while (scanner.hasNextLong())
