@@ -1,12 +1,9 @@
+import sys
+import os
+sys.path.append(os.path.abspath('../utils'))
+from fileUtils import read_input
 
 SUM_TARGET = 2020
-
-
-def read_input(file_name):
-    file = open(file_name, "r")
-    lines = file.read().splitlines()
-    file.close()
-    return lines
 
 
 def find_entries(content, num):
