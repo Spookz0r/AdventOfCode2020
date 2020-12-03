@@ -16,6 +16,6 @@ func Check(e error) {
 func ReadFileAndPutInSlice(path string) []string {
 	dat, err := ioutil.ReadFile(path)
 	Check(err)
-	s := strings.Fields(string(dat))
+	s := strings.Split(string(dat),"\n")
 	return s
 }
