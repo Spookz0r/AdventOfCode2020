@@ -34,3 +34,9 @@ func ReadFileAndSplitAtEmptyLineAndPutInSlice(path string) []string {
 	}
 	return s
 }
+
+// RemoveIndexFromList  Remove index from list
+func RemoveIndexFromList(s []int, i int) []int{
+	s[i] = s[len(s)-1]
+	return s[:len(s)-1]
+}
