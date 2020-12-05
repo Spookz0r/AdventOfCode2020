@@ -42,17 +42,6 @@ func getSeatID(boardingPass string) int{
 	}
 	seatID := minRow * 8 + minColumn
 	return seatID
-
-}
-
-func calculateAllPossibleSeatIDs() []int{
-	seatIDs := []int{}
-	for i:= 0; i < 127; i++{
-		for j:= 0; j < 7; j++{
-			seatIDs = append(seatIDs, i*8 + j)
-		}
-	}
-	return seatIDs
 }
 
 func programPartOne(input []string) int{
@@ -68,32 +57,24 @@ func programPartOne(input []string) int{
 }
 
 func programPartTwo(input []string) int{
-	allSeatIDs := calculateAllPossibleSeatIDs()
-	/* Check if SeatID is in the list of all possible Seat IDs,
-	if not remove that ID from all SeatID list*/
+	allSeatIDs := []int{}
+	// Get all Seat IDs and add to list
 	for _, boardingPass := range input{
 		seatID := getSeatID(boardingPass)
-		for index, i := range allSeatIDs{
-			if i == seatID{
-				allSeatIDs = lib.RemoveIndexFromList(allSeatIDs, index)
-			}
-		}
+		allSeatIDs = append(allSeatIDs, seatID)
 	}
-	
-	// sort from lowest to highest
-	sort.Ints(allSeatIDs) 
-	index := 0
-	for index = 0; index < len(allSeatIDs)-1; index++{
-		if ((allSeatIDs[index]+1) == allSeatIDs[index+1]) ||
-		   ((allSeatIDs[index+1]+1) == allSeatIDs[index+2]) {
-			continue
-		}
-		break
-	}
-	
-	return allSeatIDs[index+1]
-}
 
+	// Sort list and then check when there's a gap
+	sort.Ints(allSeatIDs)
+	index := 0
+	for index = 1; index < len(allSeatIDs)-1; index++{
+		if (allSeatIDs[index-1] != allSeatIDs[index] - 1){
+			break
+		}
+	}
+	
+	return allSeatIDs[index] -1
+}
 
 func main() {
 	path, err := os.Getwd()
