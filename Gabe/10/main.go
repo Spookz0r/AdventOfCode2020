@@ -27,29 +27,30 @@ func programPartTwo(input []string) int{
 	values := getValues(input)
 	// Array to hold how many combinations there are to reach each value
 	// Each element will corresponds to the matching value in values
-	solutions := []int{1}
+	possibleCombinationsPerIndex := []int{1}
 	
 	for index := 1; index < len(values); index++{
-		ans := 0
+		possibleCombinations := 0
 		// Go from start of list to current index
-		for j := 0; j < index; j++{
-			// Check if it's possible to reach the next value from values[j],
-			// if so, add how many ways there are to reach that value to answer by using solutions[j].
-			if (values[j] +3) >= values[index]{
-				// values[index] can be reached from values[j]. Add how many ways there are
-				// to reach values[j] to ans.
-				ans += solutions[j]
+		for index2 := 0; index2 < index; index2++{
+			// Check if it's possible to reach the next value from values[index2],
+			// if so, add how many ways there are to reach that value to answer by using
+			// possibleCombinationsPerIndex[index2].
+			if (values[index2] +3) >= values[index]{
+				// values[index] can be reached from values[index2]. Add how many ways there are
+				// to reach values[index2] to ans.
+				possibleCombinations += possibleCombinationsPerIndex[index2]
 			}
 		}
 
 		// ans holds how many ways there are to reach this value.
-		solutions = append(solutions, ans)
+		possibleCombinationsPerIndex = append(possibleCombinationsPerIndex, possibleCombinations)
 	}
 	// for i := range values{
-	// 	fmt.Println("There are", solutions[i],"ways to get to",values[i])
+	// 	fmt.Println("There are", possibleCombinationsPerIndex[i],"ways to get to",values[i])
 	// }
 	// result is the last value in solutions
-	return solutions[len(solutions)-1]
+	return possibleCombinationsPerIndex[len(possibleCombinationsPerIndex)-1]
 }
 
 func programPartOne(input []string) int{
