@@ -2,8 +2,15 @@ package lib
 
 import (
 	"io/ioutil"
+	"strconv"
 	"strings"
 )
+
+// MinInt min int value
+var MinInt = int(^uint(0) >> 1)
+// MaxInt max int value
+var MaxInt = -MinInt -1
+
 
 // Check if error when reading file
 func Check(e error) {
@@ -39,4 +46,11 @@ func ReadFileAndSplitAtEmptyLineAndPutInSlice(path string) []string {
 func RemoveIndexFromList(s []int, i int) []int{
 	s[i] = s[len(s)-1]
 	return s[:len(s)-1]
+}
+
+// ConvertToInt convert string to int, remove new line and spaces
+func ConvertToInt(s string) int{
+	var replacer = strings.NewReplacer("\n", "", "\r", "", " ", "")
+	val, _ := strconv.Atoi(replacer.Replace(s))
+	return val
 }
