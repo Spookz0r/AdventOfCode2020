@@ -72,7 +72,7 @@ func main() {
 	lib.Check(err)
 
 	fmt.Println("---- Advent Of Code 2020 ----")
-	fmt.Println("---- Day 9: Encoding Error ----")
+	fmt.Println("---- Day 10: Adapter Array ----")
 	testInput := lib.ReadFileAndPutInSlice(path+"\\10\\test_input.txt")
 	testInput2 := lib.ReadFileAndPutInSlice(path+"\\10\\test_input2.txt")
 	input := lib.ReadFileAndPutInSlice(path+"\\10\\input.txt")
