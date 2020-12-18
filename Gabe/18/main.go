@@ -15,22 +15,14 @@ func getValuesAndOperators(expression string)([]int, []string){
 	operators := []string{}
 	tmpval := ""
 	for index := 0; index < len(expression); index++{
-		char := expression[index]
-		switch char{
-		case '*':
+		char := string(expression[index])
+		if char == "*" || char == "+"{
 			v, _ := strconv.Atoi(tmpval)
 			values = append(values, v)
 			tmpval = ""
-			operators = append(operators,string(char))
-			break
-		case '+':
-			v, _ := strconv.Atoi(tmpval)
-			values = append(values, v)
-			tmpval = ""
-			operators = append(operators,string(char))
-			break
-		default:
-			tmpval = tmpval + string(char)
+			operators = append(operators,char)
+		} else{
+			tmpval = tmpval + char
 		}
 	}
 	v, _ := strconv.Atoi(tmpval)
@@ -42,13 +34,11 @@ func calcExpression(values []int, operators []string)int{
 	sum := values[0]
 	// No priority, just go left to right
 	for index := 0; index < len(operators); index++{
-		val2 := values[index+1]
-		operator := operators[index]
-		if operator == "+"{
-			sum += val2
+		if operators[index] == "+"{
+			sum += values[index+1]
 		}
-		if operator == "*"{
-			sum *= val2
+		if operators[index] == "*"{
+			sum *= values[index+1]
 		}
 	}
 	return sum
@@ -100,7 +90,7 @@ func program(input []string, part int)int{
 		}
 		// Now all parenthesis are gone. Get values and operators and calculate
 		values, operators := getValuesAndOperators(line)
-		
+
 		if part == 1{
 			sum += calcExpression(values, operators)
 		} else if part == 2{
