@@ -41,7 +41,6 @@ func program(input []string) {
 			foodOccurence[food]++
 		}
 	}
-	// fmt.Println(foodOccurence)
 
 	// Check if any food as the allergen multiple times
 	allergen := map[string]map[string]int{}
@@ -153,5 +152,3 @@ func main() {
 	// program(testInput)
 	program(input)
 }
-
-// 20899048083289 too high
