@@ -74,12 +74,10 @@ func recursiveCombat(playerOne []int, playerTwo []int) ([]int, []int, int) {
 		}
 		// END GAME IF ROUND HAS BEEN PLAYED BEFORE
 		if _, ok := playedRoundsOne[arrayToString(playerOne, "")]; ok {
-			playerOne, playerTwo = updatePlayers(playerOne, playerTwo)
-			break
-		}
-		if _, ok := playedRoundsTwo[arrayToString(playerTwo, "")]; ok {
-			playerOne, playerTwo = updatePlayers(playerOne, playerTwo)
-			break
+			if _, ok := playedRoundsTwo[arrayToString(playerTwo, "")]; ok {
+				playerOne, playerTwo = updatePlayers(playerOne, playerTwo)
+				break
+			}
 		}
 		// ADD PLAYED ROUNDS TO MAP
 		playedRoundsOne[arrayToString(playerOne, "")] = 1
@@ -98,14 +96,13 @@ func recursiveCombat(playerOne []int, playerTwo []int) ([]int, []int, int) {
 			} else {
 				playerTwo, playerOne = updatePlayers(playerTwo, playerOne)
 			}
-			continue
-		}
-
-		// Compare first element in both lists
-		if playerOne[0] > playerTwo[0] {
-			playerOne, playerTwo = updatePlayers(playerOne, playerTwo)
 		} else {
-			playerTwo, playerOne = updatePlayers(playerTwo, playerOne)
+			// Compare first element in both lists
+			if playerOne[0] > playerTwo[0] {
+				playerOne, playerTwo = updatePlayers(playerOne, playerTwo)
+			} else {
+				playerTwo, playerOne = updatePlayers(playerTwo, playerOne)
+			}
 		}
 	}
 
@@ -139,7 +136,7 @@ func program(input []string) {
 			playerTwo, playerOne = updatePlayers(playerTwo, playerOne)
 		}
 	}
-	result := calculateResult(playerOne, playerTwo, 0)
+	result := calculateResult(playerOne, playerTwo, 6)
 	fmt.Println("Result Part One", result)
 }
 
